@@ -30,7 +30,7 @@ param(
 )
 
 try {
-  Get-Command dotnet -ErrorAction Stop
+  Get-Command dotnet -ErrorAction Stop | Out-Null
 }
 catch {
   Write-Host "Seems you have not installed dotnet CLI." -ForegroundColor Red
@@ -106,6 +106,7 @@ if (Test-Path $projectName -PathType Container) {
 
   $key = [Console]::ReadKey().KeyChar.ToString().ToLower()
   if ($key -ne "y") {
+    Write-Host "Exiting..."
     exit 1
   }
   Write-Output ""
