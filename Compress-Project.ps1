@@ -51,6 +51,8 @@ if ($projectName) {
     exit 1
   }
 
+  .\Clean-Project.ps1
+
   Write-Host "Compressing project '$projectName'..."
   Compress-Archive $projectName "$projectName.zip"
 }
@@ -80,6 +82,8 @@ else {
 
     Remove-Item "$name.zip" -Force | Out-Null
   }
+
+  .\Clean-Project.ps1
 
   Write-Host "Compressing project '$name'..."
   Compress-Archive $projDir ("$name.zip")
